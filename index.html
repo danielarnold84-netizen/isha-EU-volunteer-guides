@@ -14,7 +14,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-.container{max-width:760px;margin:0 auto;padding:24px 20px 80px}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 80px}
 h1{font-size:1.5rem;font-weight:700;margin-bottom:4px}
 .subtitle{color:var(--muted);font-size:.9rem;margin-bottom:16px}
 
@@ -55,6 +55,7 @@ h1{font-size:1.5rem;font-weight:700;margin-bottom:4px}
 .section-nav a{font-size:.76rem;font-weight:500;text-decoration:none;color:var(--text);background:var(--section-bg);border:1px solid var(--border);border-radius:6px;padding:4px 9px;transition:all .15s;white-space:nowrap}
 .section-nav a:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 .section-nav a.ext{background:var(--green);border-color:var(--green);color:#fff;font-size:.72rem}
+.section-nav a.star{background:var(--accent);color:#fff;border-color:var(--accent)}
 
 /* LANGUAGE PANELS */
 .lang-panel{display:none}
@@ -77,6 +78,24 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 .flow span{background:var(--highlight);border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:.8rem}
 .flow span::after{content:' →';margin-left:4px;color:var(--muted)}
 .flow span:last-child::after{content:''}
+
+/* FLOW TABLE */
+.flow-table-wrap{overflow-x:auto;margin:10px 0;border-radius:8px;border:1px solid var(--border)}
+.flow-table{width:100%;border-collapse:collapse;font-size:.76rem;background:var(--section-bg)}
+.flow-table th,.flow-table td{padding:7px 9px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);text-align:left;vertical-align:middle}
+.flow-table th:last-child,.flow-table td:last-child{border-right:none}
+.flow-table tbody tr:last-child td{border-bottom:none}
+.flow-table th{background:var(--highlight);font-weight:600;color:var(--text);white-space:nowrap;font-size:.75rem}
+.flow-table td.phase{font-weight:600}
+.flow-table td.time{white-space:nowrap;color:var(--muted);font-size:.72rem;font-weight:500}
+.flow-table td.yes{color:var(--green);font-weight:600}
+.flow-table td.no{color:var(--red);font-weight:600;background:#fdecea}
+.flow-table td.open{color:var(--green);font-weight:500}
+.flow-table td.restricted{color:var(--muted);font-weight:500}
+.flow-table td.focus{background:#fef6e7;font-weight:500}
+.flow-table td.sharing-mode{background:#e8f4ec;font-weight:500;font-size:.72rem}
+.flow-table tr.mark td{background:#27764e;color:#fff;font-weight:600;text-align:center;font-size:.74rem;padding:6px 8px;letter-spacing:.3px}
+.flow-table tr.highlight td{background:#fff8e7}
 </style>
 </head>
 <body>
@@ -151,14 +170,49 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
   </ul>
 </section>
 
+<section id="de-flow">
+  <h2><span class="num">3</span> Satsang Ablauf (Flow) ⭐</h2>
+  <p class="time">Kompletter Ablauf vom Start bis Q&amp;A — die wichtigste Referenz während des Satsangs.</p>
+  <div class="flow-table-wrap">
+    <table class="flow-table">
+      <thead>
+        <tr><th>Phase</th><th>Zeit</th><th>Admit</th><th>Zoom (Co-Host)</th><th>Chat</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="phase">Yoga padhi</td><td class="time">16:30–17:00</td><td class="yes">Yes</td><td>Spotlight</td><td class="open">Open</td></tr>
+        <tr><td class="phase">Invocation</td><td class="time">17:00</td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Sadhguru intro</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Crash course</td><td class="time"></td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Preparatory asanas</td><td class="time"></td><td class="yes">Yes</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 17:10</td></tr>
+        <tr><td class="phase">Shambhavi</td><td class="time"></td><td class="no">No</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 17:40</td></tr>
+        <tr><td class="phase">Brahmananda Swaroopa</td><td class="time"></td><td class="yes">Yes</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="highlight"><td class="phase">Sharing</td><td class="time"></td><td class="yes">Yes</td><td class="sharing-mode">Focus OFF → Spotlight</td><td class="open">Open</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE (wenn Reflection-Musik läuft)</td></tr>
+        <tr><td class="phase">Announcements</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE (nach Announcements)</td></tr>
+        <tr><td class="phase">Video</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 18:30</td></tr>
+        <tr><td class="phase">Guided meditation</td><td class="time"></td><td class="no">No</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Closing</td><td class="time"></td><td class="yes">Yes</td><td class="sharing-mode">Focus OFF → Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Invocation</td><td class="time"></td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Q&amp;A session</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="open">Open</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 19:15</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="warn">⚠️ Während Sharings: Google Meet auf deinem Gerät MUTEN — sonst ist es während der Sharings zu hören!</div>
+</section>
+
 <section id="de-attendance">
-  <h2><span class="num">3</span> Attendance</h2>
+  <h2><span class="num">4</span> Attendance</h2>
   <p>Wenn Koordinator ansagt → Teilnehmerzahl aus Zoom ablesen → eintragen in:</p>
   <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Attendance</a></p>
 </section>
 
 <section id="de-sharings">
-  <h2><span class="num">4</span> Sharings begleiten</h2>
+  <h2><span class="num">5</span> Sharings begleiten</h2>
   <p>Du moderierst die Teilnehmer-Sharings im deutschen Zoom.</p>
   <div class="flow">
     <span>Hand gehoben?</span>
@@ -191,7 +245,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="de-qa">
-  <h2><span class="num">5</span> Q&amp;A</h2>
+  <h2><span class="num">6</span> Q&amp;A</h2>
   <p>Fragen auswählen, die Shambhavi-bezogen sind und kurz beantwortet werden können (Fluttering, Bandhas, leerer Magen, Cat Stretch …).</p>
   <div class="flow">
     <span>Frage im Chat finden</span>
@@ -204,7 +258,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="de-waiting">
-  <h2><span class="num">6</span> Wartezimmer-Nachrichten</h2>
+  <h2><span class="num">7</span> Wartezimmer-Nachrichten</h2>
   <p>Während Invokation, Shambhavi und Meditation kommen neue Teilnehmer in den Waiting Room.</p>
   <ul>
     <li>Auf "Message" klicken (Waiting Room Participants auswählen)</li>
@@ -214,7 +268,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="de-zoom">
-  <h2><span class="num">7</span> Zoom-Steuerung</h2>
+  <h2><span class="num">8</span> Zoom-Steuerung</h2>
   <p><strong>Chat-Einstellungen wechseln:</strong></p>
   <ul>
     <li>Yoga Padhi / Sharings / Q&amp;A → <span class="chat-setting">Meeting group chat</span></li>
@@ -273,14 +327,49 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
   </ul>
 </section>
 
+<section id="en-flow">
+  <h2><span class="num">3</span> Satsang Flow ⭐</h2>
+  <p class="time">Complete flow from start to Q&amp;A — the most important reference during the satsang.</p>
+  <div class="flow-table-wrap">
+    <table class="flow-table">
+      <thead>
+        <tr><th>Phase</th><th>Time</th><th>Admit</th><th>Zoom (Co-host)</th><th>Chat</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="phase">Yoga padhi</td><td class="time">16:30–17:00</td><td class="yes">Yes</td><td>Spotlight</td><td class="open">Open</td></tr>
+        <tr><td class="phase">Invocation</td><td class="time">17:00</td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Sadhguru intro</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Crash course</td><td class="time"></td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Preparatory asanas</td><td class="time"></td><td class="yes">Yes</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 17:10</td></tr>
+        <tr><td class="phase">Shambhavi</td><td class="time"></td><td class="no">No</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 17:40</td></tr>
+        <tr><td class="phase">Brahmananda Swaroopa</td><td class="time"></td><td class="yes">Yes</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="highlight"><td class="phase">Sharing</td><td class="time"></td><td class="yes">Yes</td><td class="sharing-mode">Focus OFF → Spotlight</td><td class="open">Open</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE (when reflection music is on)</td></tr>
+        <tr><td class="phase">Announcements</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE (after announcements)</td></tr>
+        <tr><td class="phase">Video</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 18:30</td></tr>
+        <tr><td class="phase">Guided meditation</td><td class="time"></td><td class="no">No</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Closing</td><td class="time"></td><td class="yes">Yes</td><td class="sharing-mode">Focus OFF → Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Invocation</td><td class="time"></td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Q&amp;A session</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="open">Open</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 19:15</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="warn">⚠️ During sharings: MUTE Google Meet on your device — otherwise it will be audible during the sharings!</div>
+</section>
+
 <section id="en-attendance">
-  <h2><span class="num">3</span> Attendance</h2>
+  <h2><span class="num">4</span> Attendance</h2>
   <p>When the coordinator asks → check number of participants on Zoom → enter in:</p>
   <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Attendance</a></p>
 </section>
 
 <section id="en-sharings">
-  <h2><span class="num">4</span> Facilitating Sharings</h2>
+  <h2><span class="num">5</span> Facilitating Sharings</h2>
   <p>You facilitate participant sharings in your language Zoom.</p>
   <div class="flow">
     <span>Hand raised?</span>
@@ -313,7 +402,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="en-qa">
-  <h2><span class="num">5</span> Q&amp;A</h2>
+  <h2><span class="num">6</span> Q&amp;A</h2>
   <p>Select questions that are Shambhavi-related and can be answered in 1–2 sentences (fluttering, bandhas, empty stomach, cat stretch, etc.).</p>
   <div class="flow">
     <span>Find question in chat</span>
@@ -326,7 +415,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="en-waiting">
-  <h2><span class="num">6</span> Waiting Room Messages</h2>
+  <h2><span class="num">7</span> Waiting Room Messages</h2>
   <p>During invocation, Shambhavi, and meditation, new participants go to the waiting room.</p>
   <ul>
     <li>Click "Message" (select Waiting Room Participants)</li>
@@ -336,7 +425,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="en-zoom">
-  <h2><span class="num">7</span> Zoom Controls</h2>
+  <h2><span class="num">8</span> Zoom Controls</h2>
   <p><strong>Chat settings to switch:</strong></p>
   <ul>
     <li>Yoga Padhi / Sharings / Q&amp;A → <span class="chat-setting">Meeting group chat</span></li>
@@ -395,14 +484,49 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
   </ul>
 </section>
 
+<section id="es-flow">
+  <h2><span class="num">3</span> Flujo del Satsang ⭐</h2>
+  <p class="time">Flujo completo desde el inicio hasta Q&amp;A — la referencia más importante durante el satsang.</p>
+  <div class="flow-table-wrap">
+    <table class="flow-table">
+      <thead>
+        <tr><th>Fase</th><th>Hora</th><th>Admit</th><th>Zoom (Co-host)</th><th>Chat</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="phase">Yoga padhi</td><td class="time">16:30–17:00</td><td class="yes">Yes</td><td>Spotlight</td><td class="open">Open</td></tr>
+        <tr><td class="phase">Invocation</td><td class="time">17:00</td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Sadhguru intro</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Crash course</td><td class="time"></td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Preparatory asanas</td><td class="time"></td><td class="yes">Yes</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 17:10</td></tr>
+        <tr><td class="phase">Shambhavi</td><td class="time"></td><td class="no">No</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 17:40</td></tr>
+        <tr><td class="phase">Brahmananda Swaroopa</td><td class="time"></td><td class="yes">Yes</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="highlight"><td class="phase">Sharing</td><td class="time"></td><td class="yes">Yes</td><td class="sharing-mode">Focus OFF → Spotlight</td><td class="open">Open</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE (cuando suena música de reflexión)</td></tr>
+        <tr><td class="phase">Announcements</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE (después de los anuncios)</td></tr>
+        <tr><td class="phase">Video</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 18:30</td></tr>
+        <tr><td class="phase">Guided meditation</td><td class="time"></td><td class="no">No</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Closing</td><td class="time"></td><td class="yes">Yes</td><td class="sharing-mode">Focus OFF → Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Invocation</td><td class="time"></td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Q&amp;A session</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="open">Open</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 19:15</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="warn">⚠️ Durante los sharings: SILENCIA Google Meet en tu dispositivo — ¡de lo contrario se escuchará durante los sharings!</div>
+</section>
+
 <section id="es-attendance">
-  <h2><span class="num">3</span> Asistencia</h2>
+  <h2><span class="num">4</span> Asistencia</h2>
   <p>Cuando el coordinador lo solicite → ver número de participantes en Zoom → registrar en:</p>
   <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Attendance</a></p>
 </section>
 
 <section id="es-sharings">
-  <h2><span class="num">4</span> Facilitar Sharings</h2>
+  <h2><span class="num">5</span> Facilitar Sharings</h2>
   <p>Facilitas los sharings de los participantes en tu Zoom de idioma.</p>
   <div class="flow">
     <span>¿Mano levantada?</span>
@@ -435,7 +559,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="es-qa">
-  <h2><span class="num">5</span> Q&amp;A</h2>
+  <h2><span class="num">6</span> Q&amp;A</h2>
   <p>Seleccionar preguntas relacionadas con Shambhavi que se puedan responder en 1–2 frases (fluttering, bandhas, estómago vacío, cat stretch, etc.).</p>
   <div class="flow">
     <span>Encontrar pregunta en el chat</span>
@@ -448,7 +572,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="es-waiting">
-  <h2><span class="num">6</span> Mensajes de sala de espera</h2>
+  <h2><span class="num">7</span> Mensajes de sala de espera</h2>
   <p>Durante la invocación, Shambhavi y meditación, los nuevos participantes van a la sala de espera.</p>
   <ul>
     <li>Clic en "Message" (seleccionar Waiting Room Participants)</li>
@@ -458,7 +582,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="es-zoom">
-  <h2><span class="num">7</span> Controles de Zoom</h2>
+  <h2><span class="num">8</span> Controles de Zoom</h2>
   <p><strong>Configuración del chat a cambiar:</strong></p>
   <ul>
     <li>Yoga Padhi / Sharings / Q&amp;A → <span class="chat-setting">Meeting group chat</span></li>
@@ -517,14 +641,49 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
   </ul>
 </section>
 
+<section id="it-flow">
+  <h2><span class="num">3</span> Flusso del Satsang ⭐</h2>
+  <p class="time">Flusso completo dall'inizio al Q&amp;A — il riferimento più importante durante il satsang.</p>
+  <div class="flow-table-wrap">
+    <table class="flow-table">
+      <thead>
+        <tr><th>Fase</th><th>Ora</th><th>Admit</th><th>Zoom (Co-host)</th><th>Chat</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="phase">Yoga padhi</td><td class="time">16:30–17:00</td><td class="yes">Yes</td><td>Spotlight</td><td class="open">Open</td></tr>
+        <tr><td class="phase">Invocation</td><td class="time">17:00</td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Sadhguru intro</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Crash course</td><td class="time"></td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Preparatory asanas</td><td class="time"></td><td class="yes">Yes</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 17:10</td></tr>
+        <tr><td class="phase">Shambhavi</td><td class="time"></td><td class="no">No</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 17:40</td></tr>
+        <tr><td class="phase">Brahmananda Swaroopa</td><td class="time"></td><td class="yes">Yes</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="highlight"><td class="phase">Sharing</td><td class="time"></td><td class="yes">Yes</td><td class="sharing-mode">Focus OFF → Spotlight</td><td class="open">Open</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE (quando suona la musica di riflessione)</td></tr>
+        <tr><td class="phase">Announcements</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE (dopo gli annunci)</td></tr>
+        <tr><td class="phase">Video</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 18:30</td></tr>
+        <tr><td class="phase">Guided meditation</td><td class="time"></td><td class="no">No</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Closing</td><td class="time"></td><td class="yes">Yes</td><td class="sharing-mode">Focus OFF → Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Invocation</td><td class="time"></td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Q&amp;A session</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="open">Open</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 19:15</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="warn">⚠️ Durante gli sharings: MUTA Google Meet sul tuo dispositivo — altrimenti sarà udibile durante gli sharings!</div>
+</section>
+
 <section id="it-attendance">
-  <h2><span class="num">3</span> Presenze</h2>
+  <h2><span class="num">4</span> Presenze</h2>
   <p>Quando il coordinatore lo chiede → controllare il numero di partecipanti su Zoom → registrare in:</p>
   <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Attendance</a></p>
 </section>
 
 <section id="it-sharings">
-  <h2><span class="num">4</span> Facilitare gli Sharings</h2>
+  <h2><span class="num">5</span> Facilitare gli Sharings</h2>
   <p>Faciliti gli sharings dei partecipanti nel tuo Zoom di lingua.</p>
   <div class="flow">
     <span>Mano alzata?</span>
@@ -557,7 +716,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="it-qa">
-  <h2><span class="num">5</span> Q&amp;A</h2>
+  <h2><span class="num">6</span> Q&amp;A</h2>
   <p>Selezionare domande relative a Shambhavi che possano essere risposte in 1–2 frasi (fluttering, bandha, stomaco vuoto, cat stretch, ecc.).</p>
   <div class="flow">
     <span>Trovare domanda nella chat</span>
@@ -570,7 +729,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="it-waiting">
-  <h2><span class="num">6</span> Messaggi sala d'attesa</h2>
+  <h2><span class="num">7</span> Messaggi sala d'attesa</h2>
   <p>Durante l'invocazione, Shambhavi e meditazione, i nuovi partecipanti vanno nella sala d'attesa.</p>
   <ul>
     <li>Cliccare su "Message" (selezionare Waiting Room Participants)</li>
@@ -580,7 +739,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="it-zoom">
-  <h2><span class="num">7</span> Controlli Zoom</h2>
+  <h2><span class="num">8</span> Controlli Zoom</h2>
   <p><strong>Impostazioni chat da cambiare:</strong></p>
   <ul>
     <li>Yoga Padhi / Sharings / Q&amp;A → <span class="chat-setting">Meeting group chat</span></li>
@@ -639,14 +798,49 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
   </ul>
 </section>
 
+<section id="fr-flow">
+  <h2><span class="num">3</span> Flux du Satsang ⭐</h2>
+  <p class="time">Flux complet du début au Q&amp;R — la référence la plus importante pendant le satsang.</p>
+  <div class="flow-table-wrap">
+    <table class="flow-table">
+      <thead>
+        <tr><th>Phase</th><th>Heure</th><th>Admit</th><th>Zoom (Co-host)</th><th>Chat</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="phase">Yoga padhi</td><td class="time">16:30–17:00</td><td class="yes">Yes</td><td>Spotlight</td><td class="open">Open</td></tr>
+        <tr><td class="phase">Invocation</td><td class="time">17:00</td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Sadhguru intro</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Crash course</td><td class="time"></td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Preparatory asanas</td><td class="time"></td><td class="yes">Yes</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 17:10</td></tr>
+        <tr><td class="phase">Shambhavi</td><td class="time"></td><td class="no">No</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 17:40</td></tr>
+        <tr><td class="phase">Brahmananda Swaroopa</td><td class="time"></td><td class="yes">Yes</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr class="highlight"><td class="phase">Sharing</td><td class="time"></td><td class="yes">Yes</td><td class="sharing-mode">Focus OFF → Spotlight</td><td class="open">Open</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE (pendant la musique de réflexion)</td></tr>
+        <tr><td class="phase">Announcements</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE (après les annonces)</td></tr>
+        <tr><td class="phase">Video</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 18:30</td></tr>
+        <tr><td class="phase">Guided meditation</td><td class="time"></td><td class="no">No</td><td class="focus">Focus mode</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Closing</td><td class="time"></td><td class="yes">Yes</td><td class="sharing-mode">Focus OFF → Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Invocation</td><td class="time"></td><td class="no">No</td><td>Spotlight</td><td class="restricted">Restricted</td></tr>
+        <tr><td class="phase">Q&amp;A session</td><td class="time"></td><td class="yes">Yes</td><td>Spotlight</td><td class="open">Open</td></tr>
+        <tr class="mark"><td colspan="5">📊 MARK ATTENDANCE · 19:15</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="warn">⚠️ Pendant les sharings : METS EN SOURDINE Google Meet sur ton appareil — sinon ce sera audible pendant les sharings !</div>
+</section>
+
 <section id="fr-attendance">
-  <h2><span class="num">3</span> Présences</h2>
+  <h2><span class="num">4</span> Présences</h2>
   <p>Quand le coordinateur le demande → vérifier le nombre de participants sur Zoom → inscrire dans :</p>
   <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab : Attendance</a></p>
 </section>
 
 <section id="fr-sharings">
-  <h2><span class="num">4</span> Faciliter les Sharings</h2>
+  <h2><span class="num">5</span> Faciliter les Sharings</h2>
   <p>Tu facilites les sharings des participants dans ton Zoom de langue.</p>
   <div class="flow">
     <span>Main levée ?</span>
@@ -679,7 +873,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="fr-qa">
-  <h2><span class="num">5</span> Q&amp;R</h2>
+  <h2><span class="num">6</span> Q&amp;R</h2>
   <p>Sélectionner les questions liées à Shambhavi pouvant être répondues en 1–2 phrases (fluttering, bandhas, estomac vide, cat stretch, etc.).</p>
   <div class="flow">
     <span>Trouver la question dans le chat</span>
@@ -692,7 +886,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="fr-waiting">
-  <h2><span class="num">6</span> Messages salle d'attente</h2>
+  <h2><span class="num">7</span> Messages salle d'attente</h2>
   <p>Pendant l'invocation, Shambhavi et la méditation, les nouveaux participants vont dans la salle d'attente.</p>
   <ul>
     <li>Cliquer sur « Message » (sélectionner Waiting Room Participants)</li>
@@ -702,7 +896,7 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 </section>
 
 <section id="fr-zoom">
-  <h2><span class="num">7</span> Contrôles Zoom</h2>
+  <h2><span class="num">8</span> Contrôles Zoom</h2>
   <p><strong>Paramètres du chat à modifier :</strong></p>
   <ul>
     <li>Yoga Padhi / Sharings / Q&amp;R → <span class="chat-setting">Meeting group chat</span></li>
@@ -757,6 +951,7 @@ const navConfig = {
     {id:'de-setup',label:'Setup'},
     {id:'de-dryrun',label:'Dry Runs'},
     {id:'de-vor',label:'Vor Satsang'},
+    {id:'de-flow',label:'⭐ Flow',star:true},
     {id:'de-attendance',label:'Attendance'},
     {id:'de-sharings',label:'Sharings'},
     {id:'de-qa',label:'Q&A'},
@@ -767,6 +962,7 @@ const navConfig = {
     {id:'en-setup',label:'Setup'},
     {id:'en-dryrun',label:'Dry Runs'},
     {id:'en-before',label:'Before Satsang'},
+    {id:'en-flow',label:'⭐ Flow',star:true},
     {id:'en-attendance',label:'Attendance'},
     {id:'en-sharings',label:'Sharings'},
     {id:'en-qa',label:'Q&A'},
@@ -777,6 +973,7 @@ const navConfig = {
     {id:'es-setup',label:'Configuración'},
     {id:'es-dryrun',label:'Dry Runs'},
     {id:'es-antes',label:'Antes'},
+    {id:'es-flow',label:'⭐ Flujo',star:true},
     {id:'es-attendance',label:'Asistencia'},
     {id:'es-sharings',label:'Sharings'},
     {id:'es-qa',label:'Q&A'},
@@ -787,6 +984,7 @@ const navConfig = {
     {id:'it-setup',label:'Configurazione'},
     {id:'it-dryrun',label:'Dry Runs'},
     {id:'it-prima',label:'Prima'},
+    {id:'it-flow',label:'⭐ Flusso',star:true},
     {id:'it-attendance',label:'Presenze'},
     {id:'it-sharings',label:'Sharings'},
     {id:'it-qa',label:'Q&A'},
@@ -797,6 +995,7 @@ const navConfig = {
     {id:'fr-setup',label:'Configuration'},
     {id:'fr-dryrun',label:'Dry Runs'},
     {id:'fr-avant',label:'Avant'},
+    {id:'fr-flow',label:'⭐ Flux',star:true},
     {id:'fr-attendance',label:'Présences'},
     {id:'fr-sharings',label:'Sharings'},
     {id:'fr-qa',label:'Q&R'},
@@ -815,7 +1014,10 @@ function switchLang(lang){
 
   const nav = document.getElementById('sectionNav');
   const items = navConfig[lang];
-  nav.innerHTML = items.map(i => '<a href="#' + i.id + '">' + i.label + '</a>').join('')
+  nav.innerHTML = items.map(i => {
+    const cls = i.star ? ' class="star"' : '';
+    return '<a href="#' + i.id + '"' + cls + '>' + i.label + '</a>';
+  }).join('')
     + '<a class="ext" href="' + SPREADSHEET_URL + '" target="_blank" rel="noopener">📊 Spreadsheet</a>';
 }
 
