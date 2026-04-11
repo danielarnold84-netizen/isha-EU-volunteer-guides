@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Online Satsang · Chat Support Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+:root{
+  --bg:#faf9f6;--text:#2c2c2c;--accent:#b8860b;--section-bg:#fff;
+  --border:#e8e4dc;--muted:#7a7468;--highlight:#fff8e7;
+  --red:#c0392b;--green:#27764e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{max-width:760px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:1.5rem;font-weight:700;margin-bottom:4px}
+.subtitle{color:var(--muted);font-size:.9rem;margin-bottom:16px}
+
+/* PASSWORD GATE */
+#pw-gate{
+  position:fixed;inset:0;background:var(--bg);z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:16px;padding:20px;
+  font-family:'DM Sans',sans-serif;
+}
+#pw-gate .lock{font-size:2.4rem}
+#pw-gate h2{font-size:1.1rem;color:var(--text);text-align:center;font-weight:500;max-width:320px}
+#pw-gate input{
+  padding:12px 16px;font-size:1rem;border:1px solid var(--border);
+  border-radius:8px;min-width:260px;font-family:inherit;
+  background:var(--section-bg);
+}
+#pw-gate input:focus{outline:2px solid var(--accent);outline-offset:2px}
+#pw-gate button{
+  padding:11px 26px;font-size:.95rem;background:var(--accent);
+  color:#fff;border:none;border-radius:8px;cursor:pointer;
+  font-family:inherit;font-weight:500;
+}
+#pw-gate button:hover{filter:brightness(1.08)}
+#pw-gate .err{color:var(--red);font-size:.85rem;display:none;margin:0;min-height:1.2em}
+
+/* STICKY HEADER */
+.sticky-header{position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0 0;border-bottom:1px solid var(--border);margin-bottom:20px}
+
+/* LANGUAGE TABS */
+.lang-tabs{display:flex;gap:4px;margin-bottom:6px}
+.lang-btn{font-size:1.3rem;width:40px;height:34px;border:2px solid var(--border);border-radius:8px;background:var(--section-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;opacity:.6}
+.lang-btn:hover{opacity:.9;border-color:var(--accent)}
+.lang-btn.active{opacity:1;border-color:var(--accent);background:var(--highlight);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+
+/* SECTION NAV */
+.section-nav{display:flex;gap:5px;flex-wrap:wrap;padding-bottom:8px}
+.section-nav a{font-size:.76rem;font-weight:500;text-decoration:none;color:var(--text);background:var(--section-bg);border:1px solid var(--border);border-radius:6px;padding:4px 9px;transition:all .15s;white-space:nowrap}
+.section-nav a:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.section-nav a.ext{background:var(--green);border-color:var(--green);color:#fff;font-size:.72rem}
+
+/* LANGUAGE PANELS */
+.lang-panel{display:none}
+.lang-panel.active{display:block}
+
+/* SECTIONS */
+section{background:var(--section-bg);border:1px solid var(--border);border-radius:10px;padding:20px 22px;margin-bottom:16px;scroll-margin-top:120px}
+section h2{font-size:1.05rem;font-weight:700;margin-bottom:10px;color:var(--accent);display:flex;align-items:center;gap:8px}
+section h2 .num{background:var(--accent);color:#fff;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.time{font-size:.8rem;color:var(--muted);font-weight:500;margin-bottom:8px}
+p,li{font-size:.88rem}
+ul{padding-left:18px;margin:6px 0}
+li{margin-bottom:4px}
+.warn{background:#fdecea;border-left:3px solid var(--red);padding:8px 12px;border-radius:4px;font-size:.84rem;color:var(--red);margin:8px 0;font-weight:500}
+.tip{background:var(--highlight);border-left:3px solid var(--accent);padding:8px 12px;border-radius:4px;font-size:.84rem;margin:8px 0}
+.chat-setting{display:inline-block;background:#eee;padding:2px 8px;border-radius:4px;font-size:.82rem;font-weight:500}
+a.link{color:var(--green);font-weight:500}
+hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
+.flow{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.flow span{background:var(--highlight);border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:.8rem}
+.flow span::after{content:' →';margin-left:4px;color:var(--muted)}
+.flow span:last-child::after{content:''}
+</style>
+</head>
+<body>
+
+<!-- ======== PASSWORD GATE ======== -->
+<div id="pw-gate">
+  <div class="lock">🔒</div>
+  <h2>Chat Support Guide — Isha Satsang Volunteers</h2>
+  <input id="pw-input" type="password" placeholder="Passwort / Password" autocomplete="off" autocapitalize="off" spellcheck="false">
+  <button id="pw-btn" type="button">Öffnen / Open</button>
+  <p class="err" id="pw-err">Falsches Passwort · Wrong password</p>
+</div>
+
+<div class="container">
+
+<h1>Online Satsang · Chat Support Guide</h1>
+<p class="subtitle">Quick reference for the full session flow — all languages, one page.</p>
+
+<div class="sticky-header">
+  <div class="lang-tabs">
+    <button class="lang-btn active" data-lang="de" title="Deutsch">🇩🇪</button>
+    <button class="lang-btn" data-lang="en" title="English">🇬🇧</button>
+    <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
+    <button class="lang-btn" data-lang="it" title="Italiano">🇮🇹</button>
+    <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
+  </div>
+  <div class="section-nav" id="sectionNav"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ======================   DEUTSCH   ========================= -->
+<!-- ============================================================ -->
+<div class="lang-panel active" id="lang-de">
+
+<section id="de-setup">
+  <h2><span class="num">0</span> Grundsetup</h2>
+  <ul>
+    <li>Co-Host-Status sicherstellen</li>
+    <li>Umbenennen zu <strong>"Isha Support"</strong></li>
+    <li>Handy → Google Meet · Laptop → Zoom (Sprach-Link Deutsch)</li>
+    <li>Nicht dasselbe Gerät für beides verwenden</li>
+  </ul>
+  <hr>
+  <p><strong>Host Tools</strong> — nur diese aktivieren:</p>
+  <ul>
+    <li>✅ Enable Waiting Room</li>
+    <li>✅ Chat</li>
+    <li>✅ Start Video</li>
+    <li>❌ Alles andere deaktiviert</li>
+  </ul>
+</section>
+
+<section id="de-dryrun">
+  <h2><span class="num">1</span> Dry Runs</h2>
+  <p class="time">1. Dry Run: Sonntag vor dem Satsang · 2. Dry Run: wenige Stunden vorher</p>
+  <p>Prüfen:</p>
+  <ul>
+    <li>Ishanga-Audio OK? Übersetzer-Audio OK?</li>
+    <li>Richtige Sprache hörbar?</li>
+    <li>Slides in richtiger Sprache? Tippfehler?</li>
+  </ul>
+  <p>Bei Problemen im Google Meet unmuten und sagen: <em>"Für Deutsch ist das Audio ok / zu laut / zu leise."</em></p>
+  <p class="tip">Nach dem 2. Dry Run: Zoom + Google Meet <strong>offen lassen</strong>, nicht verlassen.</p>
+</section>
+
+<section id="de-vor">
+  <h2><span class="num">2</span> Vor dem Satsang</h2>
+  <p class="time">Ab 16:25 CET/CEST · Satsang beginnt 17:00 scharf</p>
+  <ul>
+    <li>Neue Teilnehmer zulassen (nur bis <strong>30 Min. vor Beginn</strong>)</li>
+    <li>Chat: <span class="chat-setting">Meeting group chat</span> (während Yoga Padhi)</li>
+  </ul>
+</section>
+
+<section id="de-attendance">
+  <h2><span class="num">3</span> Attendance</h2>
+  <p>Wenn Koordinator ansagt → Teilnehmerzahl aus Zoom ablesen → eintragen in:</p>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Attendance</a></p>
+</section>
+
+<section id="de-sharings">
+  <h2><span class="num">4</span> Sharings begleiten</h2>
+  <p>Du moderierst die Teilnehmer-Sharings im deutschen Zoom.</p>
+  <div class="flow">
+    <span>Hand gehoben?</span>
+    <span>Entmuten</span>
+    <span>Spotlight setzen</span>
+    <span>Sharing</span>
+    <span>Klatschen</span>
+    <span>Hand senken</span>
+    <span>Muten</span>
+    <span>Spotlight entfernen</span>
+  </div>
+  <p><strong>Ansage:</strong> <em>"[Name], wir haben dich entmutet. Bitte teile."</em></p>
+  <p class="tip"><strong>Niemand meldet sich?</strong><br>"Jeder kann teilen. Ihr könnt auch im Chat schreiben." / "Wer teilen möchte, bitte Hand heben." — Oder Chat-Sharings vorlesen: "[Name] teilt: … Danke [Name]."</p>
+  <p class="tip"><strong>Zu langes Sharing:</strong><br>"Entschuldige die Unterbrechung. Die Zeit ist knapp, bitte in wenigen Sekunden abschließen."</p>
+  <p><strong>Zeitablauf (1 Min. übrig — Slide erscheint):</strong></p>
+  <ul>
+    <li>Spotlight vom Teilnehmer entfernen</li>
+    <li>Nur <strong>"Isha Foundation"</strong> spotlighten</li>
+    <li>Niemanden mehr entmuten</li>
+  </ul>
+  <p>Ansage: <em>"Ishanga wird jetzt mit der Session fortfahren."</em></p>
+  <hr>
+  <p><strong>Dein Auftreten auf Kamera:</strong></p>
+  <ul>
+    <li>Kamera an, ab Brustmitte sichtbar, Mitte des Bildes</li>
+    <li>Helle, ordentliche Kleidung (über Ellbogen, kein T-Shirt)</li>
+    <li>Heller, ruhiger Hintergrund · kabellose Kopfhörer</li>
+    <li>Sadhguru-Foto + Lampe (muss nicht im Bild sein)</li>
+  </ul>
+</section>
+
+<section id="de-qa">
+  <h2><span class="num">5</span> Q&amp;A</h2>
+  <p>Fragen auswählen, die Shambhavi-bezogen sind und kurz beantwortet werden können (Fluttering, Bandhas, leerer Magen, Cat Stretch …).</p>
+  <div class="flow">
+    <span>Frage im Chat finden</span>
+    <span>Originaltext kopieren</span>
+    <span>Q&amp;A Tab, Spalte "Original" (German)</span>
+    <span>Übersetzung automatisch</span>
+  </div>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Q&amp;A</a></p>
+  <div class="warn">Fragen nicht selbst beantworten — die Ishanga beantwortet live.</div>
+</section>
+
+<section id="de-waiting">
+  <h2><span class="num">6</span> Wartezimmer-Nachrichten</h2>
+  <p>Während Invokation, Shambhavi und Meditation kommen neue Teilnehmer in den Waiting Room.</p>
+  <ul>
+    <li>Auf "Message" klicken (Waiting Room Participants auswählen)</li>
+    <li>Passende Nachricht aus dem Spreadsheet kopieren:</li>
+  </ul>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Waiting room msgs</a></p>
+</section>
+
+<section id="de-zoom">
+  <h2><span class="num">7</span> Zoom-Steuerung</h2>
+  <p><strong>Chat-Einstellungen wechseln:</strong></p>
+  <ul>
+    <li>Yoga Padhi / Sharings / Q&amp;A → <span class="chat-setting">Meeting group chat</span></li>
+    <li>Alle anderen Teile → <span class="chat-setting">Host and co-host</span></li>
+  </ul>
+  <hr>
+  <p><strong>Spotlight:</strong> Participants → über Host hovern → "…" → "Spotlight for everyone"</p>
+  <p><strong>Focus Mode AN:</strong> More → Start Focus Mode</p>
+  <p><strong>Focus Mode AUS:</strong> More → Stop Focus Mode</p>
+  <div class="warn">Nie "Mute all" verwenden — das mutet auch die Ishanga!</div>
+</section>
+</div>
+
+<!-- ============================================================ -->
+<!-- ======================   ENGLISH   ========================= -->
+<!-- ============================================================ -->
+<div class="lang-panel" id="lang-en">
+
+<section id="en-setup">
+  <h2><span class="num">0</span> Basic Setup</h2>
+  <ul>
+    <li>Make sure you are <strong>CO-HOST</strong></li>
+    <li>Rename yourself to <strong>"Isha Support"</strong></li>
+    <li>Phone → Google Meet · Laptop → Zoom (language link)</li>
+    <li>Do not use the same device for both</li>
+  </ul>
+  <hr>
+  <p><strong>Host Tools</strong> — only these should be checked:</p>
+  <ul>
+    <li>✅ Enable Waiting Room</li>
+    <li>✅ Chat</li>
+    <li>✅ Start Video</li>
+    <li>❌ Everything else unchecked</li>
+  </ul>
+</section>
+
+<section id="en-dryrun">
+  <h2><span class="num">1</span> Dry Runs</h2>
+  <p class="time">1st Dry Run: Sunday before Satsang · 2nd Dry Run: a few hours before</p>
+  <p>Check:</p>
+  <ul>
+    <li>Ishanga audio OK? Translator audio OK?</li>
+    <li>Hearing the correct language?</li>
+    <li>Slides in correct language? Any spelling mistakes?</li>
+  </ul>
+  <p>If you spot an issue, unmute on Google Meet and say: <em>"For [language] the audio is ok / too loud / too quiet."</em></p>
+  <p class="tip">After the 2nd Dry Run: <strong>keep Zoom + Google Meet open</strong> — do not leave.</p>
+</section>
+
+<section id="en-before">
+  <h2><span class="num">2</span> Before the Satsang</h2>
+  <p class="time">From 16:25 CET/CEST · Satsang starts at 17:00 sharp</p>
+  <ul>
+    <li>Admit new participants (only up to <strong>30 min before</strong> start)</li>
+    <li>Chat: <span class="chat-setting">Meeting group chat</span> (during Yoga Padhi)</li>
+  </ul>
+</section>
+
+<section id="en-attendance">
+  <h2><span class="num">3</span> Attendance</h2>
+  <p>When the coordinator asks → check number of participants on Zoom → enter in:</p>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Attendance</a></p>
+</section>
+
+<section id="en-sharings">
+  <h2><span class="num">4</span> Facilitating Sharings</h2>
+  <p>You facilitate participant sharings in your language Zoom.</p>
+  <div class="flow">
+    <span>Hand raised?</span>
+    <span>Unmute</span>
+    <span>Add spotlight</span>
+    <span>Sharing</span>
+    <span>Clap</span>
+    <span>Lower hand</span>
+    <span>Mute back</span>
+    <span>Remove spotlight</span>
+  </div>
+  <p><strong>Script:</strong> <em>"[Name], we have unmuted you. Can you please share?"</em></p>
+  <p class="tip"><strong>No one raising hands?</strong><br>"Everyone can share. You can also share in the chat." / "Those who wish to share, please raise your hands." — Or read sharings from chat aloud: "[Name] is sharing: … Thank you [Name]."</p>
+  <p class="tip"><strong>Sharing too long:</strong><br>"Sorry to interrupt you. We are running short of time. Please take a few seconds to complete as we need to proceed further with the session."</p>
+  <p><strong>Time up (1 min left — slide appears):</strong></p>
+  <ul>
+    <li>Remove spotlight from participant</li>
+    <li>Spotlight only <strong>"Isha Foundation"</strong></li>
+    <li>Do not unmute anyone else</li>
+  </ul>
+  <p>Script: <em>"Ishanga will proceed further with the session now."</em></p>
+  <hr>
+  <p><strong>Your on-camera appearance:</strong></p>
+  <ul>
+    <li>Camera on, visible from mid-chest up, centered on screen</li>
+    <li>Neat, light-colored clothing (above elbow, no t-shirts)</li>
+    <li>Light, plain background · wireless earphones preferred</li>
+    <li>Sadhguru's photo + lamp nearby (need not be visible on camera)</li>
+  </ul>
+</section>
+
+<section id="en-qa">
+  <h2><span class="num">5</span> Q&amp;A</h2>
+  <p>Select questions that are Shambhavi-related and can be answered in 1–2 sentences (fluttering, bandhas, empty stomach, cat stretch, etc.).</p>
+  <div class="flow">
+    <span>Find question in chat</span>
+    <span>Copy original text</span>
+    <span>Q&amp;A tab, "Original" column (your language)</span>
+    <span>Translation happens automatically</span>
+  </div>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Q&amp;A</a></p>
+  <div class="warn">Do not answer questions yourself — let the Ishanga answer them live.</div>
+</section>
+
+<section id="en-waiting">
+  <h2><span class="num">6</span> Waiting Room Messages</h2>
+  <p>During invocation, Shambhavi, and meditation, new participants go to the waiting room.</p>
+  <ul>
+    <li>Click "Message" (select Waiting Room Participants)</li>
+    <li>Copy &amp; paste the appropriate message from the spreadsheet:</li>
+  </ul>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Waiting room msgs</a></p>
+</section>
+
+<section id="en-zoom">
+  <h2><span class="num">7</span> Zoom Controls</h2>
+  <p><strong>Chat settings to switch:</strong></p>
+  <ul>
+    <li>Yoga Padhi / Sharings / Q&amp;A → <span class="chat-setting">Meeting group chat</span></li>
+    <li>All other parts → <span class="chat-setting">Host and co-host</span></li>
+  </ul>
+  <hr>
+  <p><strong>Spotlight:</strong> Participants → hover over Host → "…" → "Spotlight for everyone"</p>
+  <p><strong>Focus Mode ON:</strong> More → Start Focus Mode</p>
+  <p><strong>Focus Mode OFF:</strong> More → Stop Focus Mode</p>
+  <div class="warn">Never use "Mute all" — it will mute the Ishanga and no one will hear the session!</div>
+</section>
+</div>
+
+<!-- ============================================================ -->
+<!-- ======================   ESPAÑOL   ========================= -->
+<!-- ============================================================ -->
+<div class="lang-panel" id="lang-es">
+
+<section id="es-setup">
+  <h2><span class="num">0</span> Configuración básica</h2>
+  <ul>
+    <li>Asegúrate de ser <strong>CO-HOST</strong></li>
+    <li>Renómbrate a <strong>"Isha Support"</strong></li>
+    <li>Teléfono → Google Meet · Portátil → Zoom (enlace de idioma)</li>
+    <li>No uses el mismo dispositivo para ambos</li>
+  </ul>
+  <hr>
+  <p><strong>Host Tools</strong> — solo estos deben estar activados:</p>
+  <ul>
+    <li>✅ Enable Waiting Room</li>
+    <li>✅ Chat</li>
+    <li>✅ Start Video</li>
+    <li>❌ Todo lo demás desactivado</li>
+  </ul>
+</section>
+
+<section id="es-dryrun">
+  <h2><span class="num">1</span> Dry Runs</h2>
+  <p class="time">1er Dry Run: domingo antes del Satsang · 2do Dry Run: unas horas antes</p>
+  <p>Verificar:</p>
+  <ul>
+    <li>¿Audio del Ishanga OK? ¿Audio del traductor OK?</li>
+    <li>¿Se escucha el idioma correcto?</li>
+    <li>¿Diapositivas en el idioma correcto? ¿Errores tipográficos?</li>
+  </ul>
+  <p>Si hay problemas, desmutea en Google Meet y di: <em>"Para [idioma] el audio está ok / muy alto / muy bajo."</em></p>
+  <p class="tip">Después del 2do Dry Run: <strong>mantener Zoom + Google Meet abiertos</strong> — no salir.</p>
+</section>
+
+<section id="es-antes">
+  <h2><span class="num">2</span> Antes del Satsang</h2>
+  <p class="time">Desde las 16:25 CET/CEST · El Satsang comienza a las 17:00 en punto</p>
+  <ul>
+    <li>Admitir nuevos participantes (solo hasta <strong>30 min antes</strong> del inicio)</li>
+    <li>Chat: <span class="chat-setting">Meeting group chat</span> (durante Yoga Padhi)</li>
+  </ul>
+</section>
+
+<section id="es-attendance">
+  <h2><span class="num">3</span> Asistencia</h2>
+  <p>Cuando el coordinador lo solicite → ver número de participantes en Zoom → registrar en:</p>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Attendance</a></p>
+</section>
+
+<section id="es-sharings">
+  <h2><span class="num">4</span> Facilitar Sharings</h2>
+  <p>Facilitas los sharings de los participantes en tu Zoom de idioma.</p>
+  <div class="flow">
+    <span>¿Mano levantada?</span>
+    <span>Activar micro</span>
+    <span>Poner spotlight</span>
+    <span>Sharing</span>
+    <span>Aplaudir</span>
+    <span>Bajar mano</span>
+    <span>Silenciar</span>
+    <span>Quitar spotlight</span>
+  </div>
+  <p><strong>Guión:</strong> <em>"[Nombre], te hemos activado el micrófono. ¿Puedes compartir, por favor?"</em></p>
+  <p class="tip"><strong>¿Nadie levanta la mano?</strong><br>"Todos pueden compartir. También pueden escribir en el chat." / "Quienes deseen compartir, por favor levanten la mano." — O leer sharings del chat en voz alta: "[Nombre] comparte: … Gracias [Nombre]."</p>
+  <p class="tip"><strong>Sharing demasiado largo:</strong><br>"Disculpa la interrupción. Nos queda poco tiempo. Por favor, concluye en unos segundos para poder continuar con la sesión."</p>
+  <p><strong>Tiempo agotado (1 min restante — aparece la diapositiva):</strong></p>
+  <ul>
+    <li>Quitar spotlight del participante</li>
+    <li>Spotlight solo a <strong>"Isha Foundation"</strong></li>
+    <li>No activar el micro de nadie más</li>
+  </ul>
+  <p>Guión: <em>"El Ishanga continuará con la sesión ahora."</em></p>
+  <hr>
+  <p><strong>Tu presencia en cámara:</strong></p>
+  <ul>
+    <li>Cámara encendida, visible desde el pecho hacia arriba, centrado en pantalla</li>
+    <li>Ropa clara y ordenada (sobre el codo, sin camisetas)</li>
+    <li>Fondo claro y liso · auriculares inalámbricos</li>
+    <li>Foto de Sadhguru + lámpara cerca (no necesita verse en cámara)</li>
+  </ul>
+</section>
+
+<section id="es-qa">
+  <h2><span class="num">5</span> Q&amp;A</h2>
+  <p>Seleccionar preguntas relacionadas con Shambhavi que se puedan responder en 1–2 frases (fluttering, bandhas, estómago vacío, cat stretch, etc.).</p>
+  <div class="flow">
+    <span>Encontrar pregunta en el chat</span>
+    <span>Copiar texto original</span>
+    <span>Tab Q&amp;A, columna "Original" (tu idioma)</span>
+    <span>La traducción ocurre automáticamente</span>
+  </div>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Q&amp;A</a></p>
+  <div class="warn">No respondas las preguntas tú mismo — el Ishanga las responde en vivo.</div>
+</section>
+
+<section id="es-waiting">
+  <h2><span class="num">6</span> Mensajes de sala de espera</h2>
+  <p>Durante la invocación, Shambhavi y meditación, los nuevos participantes van a la sala de espera.</p>
+  <ul>
+    <li>Clic en "Message" (seleccionar Waiting Room Participants)</li>
+    <li>Copiar y pegar el mensaje correspondiente del spreadsheet:</li>
+  </ul>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Waiting room msgs</a></p>
+</section>
+
+<section id="es-zoom">
+  <h2><span class="num">7</span> Controles de Zoom</h2>
+  <p><strong>Configuración del chat a cambiar:</strong></p>
+  <ul>
+    <li>Yoga Padhi / Sharings / Q&amp;A → <span class="chat-setting">Meeting group chat</span></li>
+    <li>Todas las demás partes → <span class="chat-setting">Host and co-host</span></li>
+  </ul>
+  <hr>
+  <p><strong>Spotlight:</strong> Participants → pasar el cursor sobre Host → "…" → "Spotlight for everyone"</p>
+  <p><strong>Focus Mode ON:</strong> More → Start Focus Mode</p>
+  <p><strong>Focus Mode OFF:</strong> More → Stop Focus Mode</p>
+  <div class="warn">Nunca uses "Mute all" — ¡también silenciará al Ishanga y nadie escuchará la sesión!</div>
+</section>
+</div>
+
+<!-- ============================================================ -->
+<!-- ======================   ITALIANO   ======================== -->
+<!-- ============================================================ -->
+<div class="lang-panel" id="lang-it">
+
+<section id="it-setup">
+  <h2><span class="num">0</span> Configurazione di base</h2>
+  <ul>
+    <li>Assicurati di essere <strong>CO-HOST</strong></li>
+    <li>Rinominati in <strong>"Isha Support"</strong></li>
+    <li>Telefono → Google Meet · Laptop → Zoom (link lingua)</li>
+    <li>Non usare lo stesso dispositivo per entrambi</li>
+  </ul>
+  <hr>
+  <p><strong>Host Tools</strong> — solo questi devono essere attivati:</p>
+  <ul>
+    <li>✅ Enable Waiting Room</li>
+    <li>✅ Chat</li>
+    <li>✅ Start Video</li>
+    <li>❌ Tutto il resto disattivato</li>
+  </ul>
+</section>
+
+<section id="it-dryrun">
+  <h2><span class="num">1</span> Dry Runs</h2>
+  <p class="time">1° Dry Run: domenica prima del Satsang · 2° Dry Run: poche ore prima</p>
+  <p>Controllare:</p>
+  <ul>
+    <li>Audio Ishanga OK? Audio traduttore OK?</li>
+    <li>Si sente la lingua corretta?</li>
+    <li>Slide nella lingua corretta? Errori di battitura?</li>
+  </ul>
+  <p>In caso di problemi, togli il mute su Google Meet e di': <em>"Per [lingua] l'audio è ok / troppo alto / troppo basso."</em></p>
+  <p class="tip">Dopo il 2° Dry Run: <strong>lasciare Zoom + Google Meet aperti</strong> — non uscire.</p>
+</section>
+
+<section id="it-prima">
+  <h2><span class="num">2</span> Prima del Satsang</h2>
+  <p class="time">Dalle 16:25 CET/CEST · Il Satsang inizia alle 17:00 in punto</p>
+  <ul>
+    <li>Ammettere nuovi partecipanti (solo fino a <strong>30 min prima</strong> dell'inizio)</li>
+    <li>Chat: <span class="chat-setting">Meeting group chat</span> (durante Yoga Padhi)</li>
+  </ul>
+</section>
+
+<section id="it-attendance">
+  <h2><span class="num">3</span> Presenze</h2>
+  <p>Quando il coordinatore lo chiede → controllare il numero di partecipanti su Zoom → registrare in:</p>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Attendance</a></p>
+</section>
+
+<section id="it-sharings">
+  <h2><span class="num">4</span> Facilitare gli Sharings</h2>
+  <p>Faciliti gli sharings dei partecipanti nel tuo Zoom di lingua.</p>
+  <div class="flow">
+    <span>Mano alzata?</span>
+    <span>Attivare micro</span>
+    <span>Mettere spotlight</span>
+    <span>Sharing</span>
+    <span>Applaudire</span>
+    <span>Abbassare mano</span>
+    <span>Silenziare</span>
+    <span>Togliere spotlight</span>
+  </div>
+  <p><strong>Script:</strong> <em>"[Nome], ti abbiamo attivato il microfono. Puoi condividere, per favore?"</em></p>
+  <p class="tip"><strong>Nessuno alza la mano?</strong><br>"Tutti possono condividere. Potete anche scrivere nella chat." / "Chi desidera condividere, per favore alzi la mano." — Oppure leggere gli sharings dalla chat ad alta voce: "[Nome] condivide: … Grazie [Nome]."</p>
+  <p class="tip"><strong>Sharing troppo lungo:</strong><br>"Scusa l'interruzione. Il tempo è limitato. Per favore, concludi in pochi secondi perché dobbiamo proseguire con la sessione."</p>
+  <p><strong>Tempo scaduto (1 min rimanente — appare la slide):</strong></p>
+  <ul>
+    <li>Togliere spotlight dal partecipante</li>
+    <li>Spotlight solo su <strong>"Isha Foundation"</strong></li>
+    <li>Non attivare il micro di nessun altro</li>
+  </ul>
+  <p>Script: <em>"L'Ishanga proseguirà ora con la sessione."</em></p>
+  <hr>
+  <p><strong>Il tuo aspetto in camera:</strong></p>
+  <ul>
+    <li>Camera accesa, visibile dal petto in su, centrato sullo schermo</li>
+    <li>Abbigliamento chiaro e ordinato (sopra il gomito, no t-shirt)</li>
+    <li>Sfondo chiaro e semplice · auricolari wireless</li>
+    <li>Foto di Sadhguru + lampada vicino (non deve essere visibile in camera)</li>
+  </ul>
+</section>
+
+<section id="it-qa">
+  <h2><span class="num">5</span> Q&amp;A</h2>
+  <p>Selezionare domande relative a Shambhavi che possano essere risposte in 1–2 frasi (fluttering, bandha, stomaco vuoto, cat stretch, ecc.).</p>
+  <div class="flow">
+    <span>Trovare domanda nella chat</span>
+    <span>Copiare testo originale</span>
+    <span>Tab Q&amp;A, colonna "Original" (la tua lingua)</span>
+    <span>La traduzione avviene automaticamente</span>
+  </div>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Q&amp;A</a></p>
+  <div class="warn">Non rispondere alle domande tu stesso — l'Ishanga risponde dal vivo.</div>
+</section>
+
+<section id="it-waiting">
+  <h2><span class="num">6</span> Messaggi sala d'attesa</h2>
+  <p>Durante l'invocazione, Shambhavi e meditazione, i nuovi partecipanti vanno nella sala d'attesa.</p>
+  <ul>
+    <li>Cliccare su "Message" (selezionare Waiting Room Participants)</li>
+    <li>Copiare e incollare il messaggio appropriato dal spreadsheet:</li>
+  </ul>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab: Waiting room msgs</a></p>
+</section>
+
+<section id="it-zoom">
+  <h2><span class="num">7</span> Controlli Zoom</h2>
+  <p><strong>Impostazioni chat da cambiare:</strong></p>
+  <ul>
+    <li>Yoga Padhi / Sharings / Q&amp;A → <span class="chat-setting">Meeting group chat</span></li>
+    <li>Tutte le altre parti → <span class="chat-setting">Host and co-host</span></li>
+  </ul>
+  <hr>
+  <p><strong>Spotlight:</strong> Participants → passare il mouse su Host → "…" → "Spotlight for everyone"</p>
+  <p><strong>Focus Mode ON:</strong> More → Start Focus Mode</p>
+  <p><strong>Focus Mode OFF:</strong> More → Stop Focus Mode</p>
+  <div class="warn">Mai usare "Mute all" — silenzia anche l'Ishanga e nessuno sentirà la sessione!</div>
+</section>
+</div>
+
+<!-- ============================================================ -->
+<!-- ======================   FRANÇAIS   ======================== -->
+<!-- ============================================================ -->
+<div class="lang-panel" id="lang-fr">
+
+<section id="fr-setup">
+  <h2><span class="num">0</span> Configuration de base</h2>
+  <ul>
+    <li>S'assurer d'être <strong>CO-HOST</strong></li>
+    <li>Se renommer en <strong>« Isha Support »</strong></li>
+    <li>Téléphone → Google Meet · Ordinateur → Zoom (lien langue)</li>
+    <li>Ne pas utiliser le même appareil pour les deux</li>
+  </ul>
+  <hr>
+  <p><strong>Host Tools</strong> — seuls ceux-ci doivent être activés :</p>
+  <ul>
+    <li>✅ Enable Waiting Room</li>
+    <li>✅ Chat</li>
+    <li>✅ Start Video</li>
+    <li>❌ Tout le reste désactivé</li>
+  </ul>
+</section>
+
+<section id="fr-dryrun">
+  <h2><span class="num">1</span> Dry Runs</h2>
+  <p class="time">1er Dry Run : dimanche avant le Satsang · 2e Dry Run : quelques heures avant</p>
+  <p>Vérifier :</p>
+  <ul>
+    <li>Audio Ishanga OK ? Audio traducteur OK ?</li>
+    <li>On entend la bonne langue ?</li>
+    <li>Slides dans la bonne langue ? Fautes de frappe ?</li>
+  </ul>
+  <p>En cas de problème, active ton micro sur Google Meet et dis : <em>« Pour [langue] l'audio est ok / trop fort / trop faible. »</em></p>
+  <p class="tip">Après le 2e Dry Run : <strong>laisser Zoom + Google Meet ouverts</strong> — ne pas quitter.</p>
+</section>
+
+<section id="fr-avant">
+  <h2><span class="num">2</span> Avant le Satsang</h2>
+  <p class="time">À partir de 16h25 CET/CEST · Le Satsang commence à 17h00 précises</p>
+  <ul>
+    <li>Admettre les nouveaux participants (seulement jusqu'à <strong>30 min avant</strong> le début)</li>
+    <li>Chat : <span class="chat-setting">Meeting group chat</span> (pendant Yoga Padhi)</li>
+  </ul>
+</section>
+
+<section id="fr-attendance">
+  <h2><span class="num">3</span> Présences</h2>
+  <p>Quand le coordinateur le demande → vérifier le nombre de participants sur Zoom → inscrire dans :</p>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab : Attendance</a></p>
+</section>
+
+<section id="fr-sharings">
+  <h2><span class="num">4</span> Faciliter les Sharings</h2>
+  <p>Tu facilites les sharings des participants dans ton Zoom de langue.</p>
+  <div class="flow">
+    <span>Main levée ?</span>
+    <span>Activer le micro</span>
+    <span>Mettre en spotlight</span>
+    <span>Sharing</span>
+    <span>Applaudir</span>
+    <span>Baisser la main</span>
+    <span>Couper le micro</span>
+    <span>Retirer le spotlight</span>
+  </div>
+  <p><strong>Script :</strong> <em>« [Nom], nous avons activé ton micro. Peux-tu partager, s'il te plaît ? »</em></p>
+  <p class="tip"><strong>Personne ne lève la main ?</strong><br>« Tout le monde peut partager. Vous pouvez aussi écrire dans le chat. » / « Ceux qui souhaitent partager, merci de lever la main. » — Ou lire les sharings du chat à voix haute : « [Nom] partage : … Merci [Nom]. »</p>
+  <p class="tip"><strong>Sharing trop long :</strong><br>« Désolé de t'interrompre. Le temps est limité. Merci de conclure en quelques secondes pour que nous puissions poursuivre la session. »</p>
+  <p><strong>Temps écoulé (1 min restante — la slide apparaît) :</strong></p>
+  <ul>
+    <li>Retirer le spotlight du participant</li>
+    <li>Spotlight uniquement sur <strong>« Isha Foundation »</strong></li>
+    <li>Ne plus activer le micro de personne</li>
+  </ul>
+  <p>Script : <em>« L'Ishanga va poursuivre la session maintenant. »</em></p>
+  <hr>
+  <p><strong>Ton apparence à la caméra :</strong></p>
+  <ul>
+    <li>Caméra allumée, visible à partir de la poitrine, centré à l'écran</li>
+    <li>Vêtements clairs et soignés (au-dessus du coude, pas de t-shirts)</li>
+    <li>Fond clair et uni · écouteurs sans fil</li>
+    <li>Photo de Sadhguru + lampe à proximité (pas nécessaire d'être visible à la caméra)</li>
+  </ul>
+</section>
+
+<section id="fr-qa">
+  <h2><span class="num">5</span> Q&amp;R</h2>
+  <p>Sélectionner les questions liées à Shambhavi pouvant être répondues en 1–2 phrases (fluttering, bandhas, estomac vide, cat stretch, etc.).</p>
+  <div class="flow">
+    <span>Trouver la question dans le chat</span>
+    <span>Copier le texte original</span>
+    <span>Tab Q&amp;A, colonne « Original » (ta langue)</span>
+    <span>La traduction se fait automatiquement</span>
+  </div>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab : Q&amp;A</a></p>
+  <div class="warn">Ne réponds pas toi-même aux questions — l'Ishanga y répond en direct.</div>
+</section>
+
+<section id="fr-waiting">
+  <h2><span class="num">6</span> Messages salle d'attente</h2>
+  <p>Pendant l'invocation, Shambhavi et la méditation, les nouveaux participants vont dans la salle d'attente.</p>
+  <ul>
+    <li>Cliquer sur « Message » (sélectionner Waiting Room Participants)</li>
+    <li>Copier-coller le message approprié depuis le spreadsheet :</li>
+  </ul>
+  <p><a class="link" href="https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838" target="_blank" rel="noopener">📊 Spreadsheet → Tab : Waiting room msgs</a></p>
+</section>
+
+<section id="fr-zoom">
+  <h2><span class="num">7</span> Contrôles Zoom</h2>
+  <p><strong>Paramètres du chat à modifier :</strong></p>
+  <ul>
+    <li>Yoga Padhi / Sharings / Q&amp;R → <span class="chat-setting">Meeting group chat</span></li>
+    <li>Toutes les autres parties → <span class="chat-setting">Host and co-host</span></li>
+  </ul>
+  <hr>
+  <p><strong>Spotlight :</strong> Participants → survoler le Host → « … » → « Spotlight for everyone »</p>
+  <p><strong>Focus Mode ON :</strong> More → Start Focus Mode</p>
+  <p><strong>Focus Mode OFF :</strong> More → Stop Focus Mode</p>
+  <div class="warn">Ne jamais utiliser « Mute all » — cela coupe aussi le micro de l'Ishanga et personne n'entendra la session !</div>
+</section>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// ============ PASSWORD GATE ============
+const PW_HASH = '133aa9a70f7e9984255272a83bc49115d2948d038c882b9d03c50acb08ded085';
+
+async function _sha256(s){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function _checkPw(){
+  const v = document.getElementById('pw-input').value;
+  const h = await _sha256(v);
+  if(h === PW_HASH){
+    try{ localStorage.setItem('isha-gate-ok','1'); }catch(e){}
+    document.getElementById('pw-gate').style.display = 'none';
+  } else {
+    document.getElementById('pw-err').style.display = 'block';
+    document.getElementById('pw-input').select();
+  }
+}
+document.getElementById('pw-btn').addEventListener('click', _checkPw);
+document.getElementById('pw-input').addEventListener('keydown', e => {
+  if(e.key === 'Enter') _checkPw();
+});
+try{
+  if(localStorage.getItem('isha-gate-ok') === '1'){
+    document.getElementById('pw-gate').style.display = 'none';
+  } else {
+    setTimeout(() => document.getElementById('pw-input').focus(), 80);
+  }
+}catch(e){
+  setTimeout(() => document.getElementById('pw-input').focus(), 80);
+}
+
+// ============ LANGUAGE SWITCHER ============
+const navConfig = {
+  de: [
+    {id:'de-setup',label:'Setup'},
+    {id:'de-dryrun',label:'Dry Runs'},
+    {id:'de-vor',label:'Vor Satsang'},
+    {id:'de-attendance',label:'Attendance'},
+    {id:'de-sharings',label:'Sharings'},
+    {id:'de-qa',label:'Q&A'},
+    {id:'de-waiting',label:'Wartezimmer'},
+    {id:'de-zoom',label:'Zoom'}
+  ],
+  en: [
+    {id:'en-setup',label:'Setup'},
+    {id:'en-dryrun',label:'Dry Runs'},
+    {id:'en-before',label:'Before Satsang'},
+    {id:'en-attendance',label:'Attendance'},
+    {id:'en-sharings',label:'Sharings'},
+    {id:'en-qa',label:'Q&A'},
+    {id:'en-waiting',label:'Waiting Room'},
+    {id:'en-zoom',label:'Zoom'}
+  ],
+  es: [
+    {id:'es-setup',label:'Configuración'},
+    {id:'es-dryrun',label:'Dry Runs'},
+    {id:'es-antes',label:'Antes'},
+    {id:'es-attendance',label:'Asistencia'},
+    {id:'es-sharings',label:'Sharings'},
+    {id:'es-qa',label:'Q&A'},
+    {id:'es-waiting',label:'Sala de espera'},
+    {id:'es-zoom',label:'Zoom'}
+  ],
+  it: [
+    {id:'it-setup',label:'Configurazione'},
+    {id:'it-dryrun',label:'Dry Runs'},
+    {id:'it-prima',label:'Prima'},
+    {id:'it-attendance',label:'Presenze'},
+    {id:'it-sharings',label:'Sharings'},
+    {id:'it-qa',label:'Q&A'},
+    {id:'it-waiting',label:"Sala d'attesa"},
+    {id:'it-zoom',label:'Zoom'}
+  ],
+  fr: [
+    {id:'fr-setup',label:'Configuration'},
+    {id:'fr-dryrun',label:'Dry Runs'},
+    {id:'fr-avant',label:'Avant'},
+    {id:'fr-attendance',label:'Présences'},
+    {id:'fr-sharings',label:'Sharings'},
+    {id:'fr-qa',label:'Q&R'},
+    {id:'fr-waiting',label:"Salle d'attente"},
+    {id:'fr-zoom',label:'Zoom'}
+  ]
+};
+
+const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1SLVN6im5qUFZvdb69uHSCoA-HoBWZ3cpqqY0bJepI2c/edit?gid=252564838#gid=252564838';
+
+function switchLang(lang){
+  document.querySelectorAll('.lang-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('lang-' + lang).classList.add('active');
+  document.querySelector('.lang-btn[data-lang="' + lang + '"]').classList.add('active');
+
+  const nav = document.getElementById('sectionNav');
+  const items = navConfig[lang];
+  nav.innerHTML = items.map(i => '<a href="#' + i.id + '">' + i.label + '</a>').join('')
+    + '<a class="ext" href="' + SPREADSHEET_URL + '" target="_blank" rel="noopener">📊 Spreadsheet</a>';
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => switchLang(btn.dataset.lang));
+});
+
+// Init
+switchLang('de');
+</script>
+
+</body>
+</html>
