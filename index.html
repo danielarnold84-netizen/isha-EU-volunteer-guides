@@ -96,6 +96,19 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 .flow-table td.sharing-mode{background:#e8f4ec;font-weight:500;font-size:.72rem}
 .flow-table tr.mark td{background:#27764e;color:#fff;font-weight:600;text-align:center;font-size:.74rem;padding:6px 8px;letter-spacing:.3px}
 .flow-table tr.highlight td{background:#fff8e7}
+
+/* SCRIPTS + STEPS (Sharings section) */
+.scripts{margin:8px 0 14px}
+.script-item{display:flex;gap:10px;margin-bottom:7px;padding:8px 12px;background:var(--highlight);border-left:3px solid var(--accent);border-radius:4px;font-size:.84rem;flex-wrap:wrap;align-items:baseline}
+.script-when{color:var(--muted);font-weight:600;font-size:.76rem;min-width:170px;text-transform:uppercase;letter-spacing:.3px;flex-shrink:0}
+.script-item em{flex:1;min-width:200px;color:var(--text);font-style:italic}
+ol.steps{padding-left:24px;margin:10px 0;counter-reset:step}
+ol.steps > li{margin-bottom:8px;font-size:.85rem;padding-left:4px}
+ol.steps > li::marker{font-weight:700;color:var(--accent)}
+ol.steps ul{padding-left:18px;margin:4px 0 0;list-style:none}
+ol.steps ul li{font-size:.82rem;margin-bottom:3px;position:relative;padding-left:14px}
+ol.steps ul li::before{content:'→';position:absolute;left:0;color:var(--muted);font-weight:600}
+.step-script{display:inline-block;background:#fff;border:1px solid var(--border);border-left:3px solid var(--accent);padding:2px 8px;border-radius:3px;font-style:italic;font-size:.82rem;margin-top:2px}
 </style>
 </head>
 <body>
@@ -212,29 +225,52 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 
 <section id="de-sharings">
   <h2><span class="num">5</span> Sharings begleiten</h2>
-  <p>Du moderierst die Teilnehmer-Sharings im deutschen Zoom.</p>
-  <div class="flow">
-    <span>Hand gehoben?</span>
-    <span>Entmuten</span>
-    <span>Spotlight setzen</span>
-    <span>Sharing</span>
-    <span>Klatschen</span>
-    <span>Hand senken</span>
-    <span>Muten</span>
-    <span>Spotlight entfernen</span>
+  <p>Du moderierst die Teilnehmer-Sharings im deutschen Zoom. Die folgenden Scripts und Schritte sind die offizielle Vorlage aus dem Isha Chat Support Spreadsheet.</p>
+
+  <p><strong>🎤 Offizielle Scripts — was du sagst:</strong></p>
+  <div class="scripts">
+    <div class="script-item"><span class="script-when">Am Anfang</span><em>"Wer teilen möchte, hebt bitte die Hand."</em></div>
+    <div class="script-item"><span class="script-when">Nach Unmute + Spotlight</span><em>"[Name], wir haben dich unmuted. Kannst du bitte teilen?"</em></div>
+    <div class="script-item"><span class="script-when">Wenn die Person schweigt</span><em>"[Name] — du wurdest unmuted, du kannst jetzt teilen."</em></div>
+    <div class="script-item"><span class="script-when">Nach dem Sharing</span><em>"Danke fürs Teilen."</em></div>
+    <div class="script-item"><span class="script-when">Unterbrechen (zu lang)</span><em>"Entschuldige die Unterbrechung :) Wir haben nur noch wenig Zeit. Bitte nimm dir ein paar Sekunden um abzuschließen, wir müssen mit der Session weitermachen."</em></div>
+    <div class="script-item"><span class="script-when">Zeit vorbei (Slide)</span><em>"Die Ishanga wird jetzt mit der Session fortfahren."</em></div>
   </div>
-  <p><strong>Ansage:</strong> <em>"[Name], wir haben dich entmutet. Bitte teile."</em></p>
-  <p class="tip"><strong>Niemand meldet sich?</strong><br>"Jeder kann teilen. Ihr könnt auch im Chat schreiben." / "Wer teilen möchte, bitte Hand heben." — Oder Chat-Sharings vorlesen: "[Name] teilt: … Danke [Name]."</p>
-  <p class="tip"><strong>Zu langes Sharing:</strong><br>"Entschuldige die Unterbrechung. Die Zeit ist knapp, bitte in wenigen Sekunden abschließen."</p>
-  <p><strong>Zeitablauf (1 Min. übrig — Slide erscheint):</strong></p>
-  <ul>
-    <li>Spotlight vom Teilnehmer entfernen</li>
-    <li>Nur <strong>"Isha Foundation"</strong> spotlighten</li>
-    <li>Niemanden mehr entmuten</li>
-  </ul>
-  <p>Ansage: <em>"Ishanga wird jetzt mit der Session fortfahren."</em></p>
+
   <hr>
-  <p><strong>Dein Auftreten auf Kamera:</strong></p>
+
+  <p><strong>📋 Steps to follow — offizielle Abfolge:</strong></p>
+  <ol class="steps">
+    <li>Eigene Kamera einschalten</li>
+    <li>Spotlight auf dich selbst setzen<br><small>Participants → eigener Name → "…" → "Replace spotlight"</small></li>
+    <li>Teilnehmer auffordern, Hand zu heben — Script am Anfang sagen</li>
+    <li>Eine Person auswählen</li>
+    <li>"Ask to unmute" klicken<br><small>Person bekommt einen Popup und kann sich selbst unmuten</small></li>
+    <li>Person per Spotlight hinzufügen ("Add") — Unmute-Script sagen</li>
+    <li>Nach dem Sharing:
+      <ul>
+        <li>Danken: <em>"Danke fürs Teilen."</em></li>
+        <li>a) Person wieder <strong>muten (!!!)</strong></li>
+        <li>b) Spotlight entfernen</li>
+        <li>c) Hand senken — <strong>nur NACH dem Muten</strong></li>
+      </ul>
+    </li>
+    <li>Nächste Person auswählen</li>
+    <li>Wenn "1 Minute übrig"-Slide erscheint:
+      <ul>
+        <li>Unterbrechen-Script sagen</li>
+        <li>a) Alle Teilnehmer <strong>muten (!!!)</strong></li>
+        <li>b) Eigenen Spotlight entfernen → Isha Foundation wird automatisch wieder gespotlightet</li>
+      </ul>
+    </li>
+    <li>Wenn die Zeit ganz vorbei ist: Ende-Script sagen</li>
+  </ol>
+
+  <p class="tip"><strong>Niemand hebt die Hand?</strong><br>Kurz warten, dann Start-Script wiederholen. Optional: Leute ermutigen, auch per Chat zu teilen.</p>
+
+  <hr>
+
+  <p><strong>📹 Dein Auftreten auf Kamera:</strong></p>
   <ul>
     <li>Kamera an, ab Brustmitte sichtbar, Mitte des Bildes</li>
     <li>Helle, ordentliche Kleidung (über Ellbogen, kein T-Shirt)</li>
@@ -368,29 +404,52 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 
 <section id="en-sharings">
   <h2><span class="num">5</span> Facilitating Sharings</h2>
-  <p>You facilitate participant sharings in your language Zoom.</p>
-  <div class="flow">
-    <span>Hand raised?</span>
-    <span>Unmute</span>
-    <span>Add spotlight</span>
-    <span>Sharing</span>
-    <span>Clap</span>
-    <span>Lower hand</span>
-    <span>Mute back</span>
-    <span>Remove spotlight</span>
+  <p>You facilitate participant sharings in your language Zoom. The following scripts and steps are the official reference from the Isha Chat Support spreadsheet.</p>
+
+  <p><strong>🎤 Official scripts — what to say:</strong></p>
+  <div class="scripts">
+    <div class="script-item"><span class="script-when">At the beginning</span><em>"Those who wish to share, please raise your hands."</em></div>
+    <div class="script-item"><span class="script-when">After unmute + spotlight</span><em>"[Name], we have unmuted you. Can you please share?"</em></div>
+    <div class="script-item"><span class="script-when">If the person stays silent</span><em>"[Name] — you have been unmuted, you can share."</em></div>
+    <div class="script-item"><span class="script-when">After the sharing</span><em>"Thank you for sharing."</em></div>
+    <div class="script-item"><span class="script-when">If you need to interrupt</span><em>"Sorry to interrupt you :) We are running short of time. Please take a few seconds to complete as we need to proceed further with the session."</em></div>
+    <div class="script-item"><span class="script-when">Once time is over (slide)</span><em>"Ishanga will proceed further with the session now."</em></div>
   </div>
-  <p><strong>Script:</strong> <em>"[Name], we have unmuted you. Can you please share?"</em></p>
-  <p class="tip"><strong>No one raising hands?</strong><br>"Everyone can share. You can also share in the chat." / "Those who wish to share, please raise your hands." — Or read sharings from chat aloud: "[Name] is sharing: … Thank you [Name]."</p>
-  <p class="tip"><strong>Sharing too long:</strong><br>"Sorry to interrupt you. We are running short of time. Please take a few seconds to complete as we need to proceed further with the session."</p>
-  <p><strong>Time up (1 min left — slide appears):</strong></p>
-  <ul>
-    <li>Remove spotlight from participant</li>
-    <li>Spotlight only <strong>"Isha Foundation"</strong></li>
-    <li>Do not unmute anyone else</li>
-  </ul>
-  <p>Script: <em>"Ishanga will proceed further with the session now."</em></p>
+
   <hr>
-  <p><strong>Your on-camera appearance:</strong></p>
+
+  <p><strong>📋 Steps to follow — official workflow:</strong></p>
+  <ol class="steps">
+    <li>Turn on your camera</li>
+    <li>Replace spotlight to yourself<br><small>Participants → find your own name → "…" → "Replace spotlight"</small></li>
+    <li>Ask people to raise their hands — say the opening script</li>
+    <li>Choose a ppt</li>
+    <li>Click "Ask to unmute"<br><small>The ppt gets a popup and can unmute themselves</small></li>
+    <li>"Add" Spotlight to the person sharing — say the unmute script</li>
+    <li>After the sharing:
+      <ul>
+        <li>Thank them: <em>"Thank you for sharing."</em></li>
+        <li>a) <strong>Mute back the ppt (!!!)</strong></li>
+        <li>b) Remove spotlight</li>
+        <li>c) Lower the hand — <strong>ONLY AFTER muting them</strong></li>
+      </ul>
+    </li>
+    <li>Choose another ppt</li>
+    <li>When the "1 minute left" slide appears:
+      <ul>
+        <li>Say the interrupt script</li>
+        <li>a) <strong>Mute all ppts (!!!)</strong></li>
+        <li>b) Remove spotlight from yourself → Isha Foundation will be spotlighted automatically</li>
+      </ul>
+    </li>
+    <li>Once time is fully over: say the ending script</li>
+  </ol>
+
+  <p class="tip"><strong>No one raising hands?</strong><br>Wait a moment, then repeat the opening script. Optionally encourage people to share via chat too.</p>
+
+  <hr>
+
+  <p><strong>📹 Your on-camera appearance:</strong></p>
   <ul>
     <li>Camera on, visible from mid-chest up, centered on screen</li>
     <li>Neat, light-colored clothing (above elbow, no t-shirts)</li>
@@ -524,29 +583,52 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 
 <section id="es-sharings">
   <h2><span class="num">5</span> Facilitar Sharings</h2>
-  <p>Facilitas los sharings de los participantes en tu Zoom de idioma.</p>
-  <div class="flow">
-    <span>¿Mano levantada?</span>
-    <span>Activar micro</span>
-    <span>Poner spotlight</span>
-    <span>Sharing</span>
-    <span>Aplaudir</span>
-    <span>Bajar mano</span>
-    <span>Silenciar</span>
-    <span>Quitar spotlight</span>
+  <p>Facilitas los sharings de los participantes en tu Zoom de idioma. Los siguientes guiones y pasos son la referencia oficial del spreadsheet Isha Chat Support.</p>
+
+  <p><strong>🎤 Guiones oficiales — qué decir:</strong></p>
+  <div class="scripts">
+    <div class="script-item"><span class="script-when">Al principio</span><em>"Quienes deseen compartir, por favor levanten la mano."</em></div>
+    <div class="script-item"><span class="script-when">Tras activar micro + spotlight</span><em>"[Nombre], te hemos activado el micrófono. ¿Puedes compartir, por favor?"</em></div>
+    <div class="script-item"><span class="script-when">Si la persona no habla</span><em>"[Nombre] — tienes el micrófono activado, puedes compartir."</em></div>
+    <div class="script-item"><span class="script-when">Después del sharing</span><em>"Gracias por compartir."</em></div>
+    <div class="script-item"><span class="script-when">Si hay que interrumpir</span><em>"Disculpa la interrupción :) Nos queda poco tiempo. Por favor, tómate unos segundos para concluir, necesitamos continuar con la sesión."</em></div>
+    <div class="script-item"><span class="script-when">Cuando se acabe el tiempo</span><em>"El Ishanga continuará con la sesión ahora."</em></div>
   </div>
-  <p><strong>Guión:</strong> <em>"[Nombre], te hemos activado el micrófono. ¿Puedes compartir, por favor?"</em></p>
-  <p class="tip"><strong>¿Nadie levanta la mano?</strong><br>"Todos pueden compartir. También pueden escribir en el chat." / "Quienes deseen compartir, por favor levanten la mano." — O leer sharings del chat en voz alta: "[Nombre] comparte: … Gracias [Nombre]."</p>
-  <p class="tip"><strong>Sharing demasiado largo:</strong><br>"Disculpa la interrupción. Nos queda poco tiempo. Por favor, concluye en unos segundos para poder continuar con la sesión."</p>
-  <p><strong>Tiempo agotado (1 min restante — aparece la diapositiva):</strong></p>
-  <ul>
-    <li>Quitar spotlight del participante</li>
-    <li>Spotlight solo a <strong>"Isha Foundation"</strong></li>
-    <li>No activar el micro de nadie más</li>
-  </ul>
-  <p>Guión: <em>"El Ishanga continuará con la sesión ahora."</em></p>
+
   <hr>
-  <p><strong>Tu presencia en cámara:</strong></p>
+
+  <p><strong>📋 Pasos a seguir — flujo oficial:</strong></p>
+  <ol class="steps">
+    <li>Enciende tu cámara</li>
+    <li>Pon el spotlight en ti mismo/a<br><small>Participants → tu propio nombre → "…" → "Replace spotlight"</small></li>
+    <li>Pide a la gente que levante la mano — di el guion inicial</li>
+    <li>Elige un/a participante</li>
+    <li>Haz clic en "Ask to unmute"<br><small>El participante recibe un popup y puede activarse el micro</small></li>
+    <li>"Add" Spotlight a la persona que comparte — di el guion de micro activado</li>
+    <li>Después del sharing:
+      <ul>
+        <li>Agradece: <em>"Gracias por compartir."</em></li>
+        <li>a) <strong>Silencia al ppt de nuevo (!!!)</strong></li>
+        <li>b) Quita el spotlight</li>
+        <li>c) Baja la mano — <strong>SOLO DESPUÉS de silenciarlo</strong></li>
+      </ul>
+    </li>
+    <li>Elige al siguiente ppt</li>
+    <li>Cuando aparezca la diapositiva "1 minute left":
+      <ul>
+        <li>Di el guion de interrupción</li>
+        <li>a) <strong>Silencia a todos los ppts (!!!)</strong></li>
+        <li>b) Quita el spotlight de ti mismo/a → Isha Foundation quedará automáticamente en spotlight</li>
+      </ul>
+    </li>
+    <li>Cuando el tiempo se haya agotado del todo: di el guion final</li>
+  </ol>
+
+  <p class="tip"><strong>¿Nadie levanta la mano?</strong><br>Espera un momento, luego repite el guion inicial. Opcionalmente anima a la gente a compartir también por el chat.</p>
+
+  <hr>
+
+  <p><strong>📹 Tu presencia en cámara:</strong></p>
   <ul>
     <li>Cámara encendida, visible desde el pecho hacia arriba, centrado en pantalla</li>
     <li>Ropa clara y ordenada (sobre el codo, sin camisetas)</li>
@@ -680,29 +762,52 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 
 <section id="it-sharings">
   <h2><span class="num">5</span> Facilitare gli Sharings</h2>
-  <p>Faciliti gli sharings dei partecipanti nel tuo Zoom di lingua.</p>
-  <div class="flow">
-    <span>Mano alzata?</span>
-    <span>Attivare micro</span>
-    <span>Mettere spotlight</span>
-    <span>Sharing</span>
-    <span>Applaudire</span>
-    <span>Abbassare mano</span>
-    <span>Silenziare</span>
-    <span>Togliere spotlight</span>
+  <p>Faciliti gli sharings dei partecipanti nel tuo Zoom di lingua. Gli script e passi seguenti sono il riferimento ufficiale dal spreadsheet Isha Chat Support.</p>
+
+  <p><strong>🎤 Script ufficiali — cosa dire:</strong></p>
+  <div class="scripts">
+    <div class="script-item"><span class="script-when">All'inizio</span><em>"Chi desidera condividere, per favore alzi la mano."</em></div>
+    <div class="script-item"><span class="script-when">Dopo unmute + spotlight</span><em>"[Nome], ti abbiamo attivato il microfono. Puoi condividere, per favore?"</em></div>
+    <div class="script-item"><span class="script-when">Se la persona non parla</span><em>"[Nome] — il tuo microfono è attivo, puoi condividere."</em></div>
+    <div class="script-item"><span class="script-when">Dopo la condivisione</span><em>"Grazie per la condivisione."</em></div>
+    <div class="script-item"><span class="script-when">Se devi interrompere</span><em>"Scusa l'interruzione :) Il tempo è poco. Per favore prenditi qualche secondo per concludere, dobbiamo proseguire con la sessione."</em></div>
+    <div class="script-item"><span class="script-when">Tempo scaduto (slide)</span><em>"L'Ishanga proseguirà ora con la sessione."</em></div>
   </div>
-  <p><strong>Script:</strong> <em>"[Nome], ti abbiamo attivato il microfono. Puoi condividere, per favore?"</em></p>
-  <p class="tip"><strong>Nessuno alza la mano?</strong><br>"Tutti possono condividere. Potete anche scrivere nella chat." / "Chi desidera condividere, per favore alzi la mano." — Oppure leggere gli sharings dalla chat ad alta voce: "[Nome] condivide: … Grazie [Nome]."</p>
-  <p class="tip"><strong>Sharing troppo lungo:</strong><br>"Scusa l'interruzione. Il tempo è limitato. Per favore, concludi in pochi secondi perché dobbiamo proseguire con la sessione."</p>
-  <p><strong>Tempo scaduto (1 min rimanente — appare la slide):</strong></p>
-  <ul>
-    <li>Togliere spotlight dal partecipante</li>
-    <li>Spotlight solo su <strong>"Isha Foundation"</strong></li>
-    <li>Non attivare il micro di nessun altro</li>
-  </ul>
-  <p>Script: <em>"L'Ishanga proseguirà ora con la sessione."</em></p>
+
   <hr>
-  <p><strong>Il tuo aspetto in camera:</strong></p>
+
+  <p><strong>📋 Passi da seguire — flusso ufficiale:</strong></p>
+  <ol class="steps">
+    <li>Accendi la tua camera</li>
+    <li>Metti lo spotlight su te stesso/a<br><small>Participants → il tuo nome → "…" → "Replace spotlight"</small></li>
+    <li>Chiedi di alzare la mano — di' lo script iniziale</li>
+    <li>Scegli un/a ppt</li>
+    <li>Clicca su "Ask to unmute"<br><small>Il ppt riceve un popup e può attivarsi il microfono</small></li>
+    <li>"Add" Spotlight alla persona che condivide — di' lo script di unmute</li>
+    <li>Dopo la condivisione:
+      <ul>
+        <li>Ringrazia: <em>"Grazie per la condivisione."</em></li>
+        <li>a) <strong>Silenzia di nuovo il ppt (!!!)</strong></li>
+        <li>b) Togli lo spotlight</li>
+        <li>c) Abbassa la mano — <strong>SOLO DOPO aver silenziato</strong></li>
+      </ul>
+    </li>
+    <li>Scegli il prossimo ppt</li>
+    <li>Quando appare la slide "1 minute left":
+      <ul>
+        <li>Di' lo script di interruzione</li>
+        <li>a) <strong>Silenzia tutti i ppts (!!!)</strong></li>
+        <li>b) Togli lo spotlight da te stesso/a → Isha Foundation verrà automaticamente messa in spotlight</li>
+      </ul>
+    </li>
+    <li>Quando il tempo è del tutto scaduto: di' lo script finale</li>
+  </ol>
+
+  <p class="tip"><strong>Nessuno alza la mano?</strong><br>Aspetta un momento, poi ripeti lo script iniziale. Eventualmente incoraggia a condividere anche in chat.</p>
+
+  <hr>
+
+  <p><strong>📹 Il tuo aspetto in camera:</strong></p>
   <ul>
     <li>Camera accesa, visibile dal petto in su, centrato sullo schermo</li>
     <li>Abbigliamento chiaro e ordinato (sopra il gomito, no t-shirt)</li>
@@ -836,29 +941,52 @@ hr{border:none;border-top:1px dashed var(--border);margin:12px 0}
 
 <section id="fr-sharings">
   <h2><span class="num">5</span> Faciliter les Sharings</h2>
-  <p>Tu facilites les sharings des participants dans ton Zoom de langue.</p>
-  <div class="flow">
-    <span>Main levée ?</span>
-    <span>Activer le micro</span>
-    <span>Mettre en spotlight</span>
-    <span>Sharing</span>
-    <span>Applaudir</span>
-    <span>Baisser la main</span>
-    <span>Couper le micro</span>
-    <span>Retirer le spotlight</span>
+  <p>Tu facilites les sharings des participants dans ton Zoom de langue. Les scripts et étapes ci-dessous sont la référence officielle du spreadsheet Isha Chat Support.</p>
+
+  <p><strong>🎤 Scripts officiels — ce qu'il faut dire :</strong></p>
+  <div class="scripts">
+    <div class="script-item"><span class="script-when">Au début</span><em>« Ceux qui souhaitent partager, merci de lever la main. »</em></div>
+    <div class="script-item"><span class="script-when">Après unmute + spotlight</span><em>« [Nom], nous avons activé ton micro. Peux-tu partager, s'il te plaît ? »</em></div>
+    <div class="script-item"><span class="script-when">Si la personne ne parle pas</span><em>« [Nom] — ton micro est activé, tu peux partager. »</em></div>
+    <div class="script-item"><span class="script-when">Après le partage</span><em>« Merci pour ton partage. »</em></div>
+    <div class="script-item"><span class="script-when">Si tu dois interrompre</span><em>« Désolé de t'interrompre :) Le temps est limité. Merci de prendre quelques secondes pour conclure, nous devons poursuivre la session. »</em></div>
+    <div class="script-item"><span class="script-when">Une fois le temps écoulé</span><em>« L'Ishanga va poursuivre la session maintenant. »</em></div>
   </div>
-  <p><strong>Script :</strong> <em>« [Nom], nous avons activé ton micro. Peux-tu partager, s'il te plaît ? »</em></p>
-  <p class="tip"><strong>Personne ne lève la main ?</strong><br>« Tout le monde peut partager. Vous pouvez aussi écrire dans le chat. » / « Ceux qui souhaitent partager, merci de lever la main. » — Ou lire les sharings du chat à voix haute : « [Nom] partage : … Merci [Nom]. »</p>
-  <p class="tip"><strong>Sharing trop long :</strong><br>« Désolé de t'interrompre. Le temps est limité. Merci de conclure en quelques secondes pour que nous puissions poursuivre la session. »</p>
-  <p><strong>Temps écoulé (1 min restante — la slide apparaît) :</strong></p>
-  <ul>
-    <li>Retirer le spotlight du participant</li>
-    <li>Spotlight uniquement sur <strong>« Isha Foundation »</strong></li>
-    <li>Ne plus activer le micro de personne</li>
-  </ul>
-  <p>Script : <em>« L'Ishanga va poursuivre la session maintenant. »</em></p>
+
   <hr>
-  <p><strong>Ton apparence à la caméra :</strong></p>
+
+  <p><strong>📋 Étapes à suivre — flux officiel :</strong></p>
+  <ol class="steps">
+    <li>Allume ta caméra</li>
+    <li>Mets le spotlight sur toi-même<br><small>Participants → ton propre nom → « … » → « Replace spotlight »</small></li>
+    <li>Demande aux gens de lever la main — dis le script d'ouverture</li>
+    <li>Choisis un/e ppt</li>
+    <li>Clique sur « Ask to unmute »<br><small>Le/la ppt reçoit une popup et peut activer son propre micro</small></li>
+    <li>« Add » Spotlight sur la personne qui partage — dis le script d'unmute</li>
+    <li>Après le partage :
+      <ul>
+        <li>Remercie : <em>« Merci pour ton partage. »</em></li>
+        <li>a) <strong>Coupe à nouveau le micro du ppt (!!!)</strong></li>
+        <li>b) Retire le spotlight</li>
+        <li>c) Baisse la main — <strong>UNIQUEMENT APRÈS avoir coupé le micro</strong></li>
+      </ul>
+    </li>
+    <li>Choisis le/la prochain(e) ppt</li>
+    <li>Quand la slide « 1 minute left » apparaît :
+      <ul>
+        <li>Dis le script d'interruption</li>
+        <li>a) <strong>Coupe le micro de tous les ppts (!!!)</strong></li>
+        <li>b) Retire le spotlight de toi-même → Isha Foundation sera automatiquement mise en spotlight</li>
+      </ul>
+    </li>
+    <li>Une fois le temps totalement écoulé : dis le script final</li>
+  </ol>
+
+  <p class="tip"><strong>Personne ne lève la main ?</strong><br>Attends un moment, puis répète le script d'ouverture. Éventuellement encourage les gens à partager aussi dans le chat.</p>
+
+  <hr>
+
+  <p><strong>📹 Ton apparence à la caméra :</strong></p>
   <ul>
     <li>Caméra allumée, visible à partir de la poitrine, centré à l'écran</li>
     <li>Vêtements clairs et soignés (au-dessus du coude, pas de t-shirts)</li>
