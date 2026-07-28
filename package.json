@@ -1,0 +1,14 @@
+{
+  "name": "isha-eu-volunteer-guides",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Guides für Online-Satsang-Volunteers (DE/EN/ES/IT/FR)",
+  "scripts": {
+    "lint": "node tools/check-page.js",
+    "test": "node --test",
+    "check": "npm run lint && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
