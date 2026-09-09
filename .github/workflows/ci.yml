@@ -16,9 +16,33 @@ jobs:
         with:
           node-version: "22"
 
-      # Keine Abhängigkeiten — npm ci gäbe es nichts zu installieren.
+      # Bewusst ohne npm install: Linter und Unit-Tests dürfen keine
+      # Abhängigkeit brauchen. Für den Browser gibt es den Job darunter.
       - name: Seite prüfen
         run: npm run lint
 
       - name: Tests
         run: npm test
+
+  # Der Browser-Durchlauf ist der einzige Teil mit Abhängigkeit. Er läuft
+  # getrennt, damit ein Ausfall von Playwright nicht die schnelle Prüfung
+  # oben blockiert — SMOKE_REQUIRED sorgt dafür, dass ein fehlender Browser
+  # als Fehler gilt und nicht als "alles übersprungen, also grün".
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Playwright installieren
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Smoke-Tests
+        run: npm run smoke
+        env:
+          SMOKE_REQUIRED: "1"

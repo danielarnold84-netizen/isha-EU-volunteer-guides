@@ -4,11 +4,15 @@
   "private": true,
   "description": "Guides für Online-Satsang-Volunteers (DE/EN/ES/IT/FR)",
   "scripts": {
-    "lint": "node tools/check-page.js",
+    "lint": "node tools/check-page.js && node tools/i18n-parity.js",
     "test": "node --test",
+    "smoke": "node --test smoke/*.smoke.js",
     "check": "npm run lint && npm test"
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0"
   }
 }
